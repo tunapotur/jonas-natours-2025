@@ -1,0 +1,23 @@
+{
+  "name": "jonas-natours-2025",
+  "version": "1.0.0",
+  "description": "Learning node, express and mongoDB",
+  "homepage": "https://github.com/tunapotur/jonas-natours-2025#readme",
+  "bugs": {
+    "url": "https://github.com/tunapotur/jonas-natours-2025/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tunapotur/jonas-natours-2025.git"
+  },
+  "license": "ISC",
+  "author": "Jonas",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
