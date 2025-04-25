@@ -7,7 +7,12 @@ const userRouter = require('./routes/userRoutes');
 const app = express();
 
 // 1-MIDDLEWARES
-app.use(morgan('dev'));
+// TODO production modunda çalışıncada development modunda kalıyor
+// npm run start:prod
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
+
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 

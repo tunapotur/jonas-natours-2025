@@ -2,6 +2,7 @@
 
 - express
 - morgan
+- dotenv
 
 # devDependencies
 
