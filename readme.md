@@ -8,17 +8,17 @@
 
 - nodemon
 
-TODO alttaki ayarlar hatalı kullanılacaksa düzenlenmesi gerek
-
 - eslint
-  prettier
-  eslint-config-prettier
-  eslint-plugin-prettier
-  eslint-config-airbnb
-  eslint-plugin-node
-  eslint-plugin-import
-  eslint-plugin-jsx-a11y
-  eslint-plugin-react
+
+  https://eslint.org/docs/latest/use/getting-started
+  npm init @eslint/config@latest
+
+  https://github.com/prettier/eslint-plugin-prettier
+
+  "scripts": {
+  "lint": "eslint",}
+  npm run lint
+  tüm kodda bulunan uyarıları ve hataları tarar
 
 # express
 

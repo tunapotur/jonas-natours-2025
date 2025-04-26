@@ -15,6 +15,7 @@
   "type": "commonjs",
   "main": "app.js",
   "scripts": {
+    "lint": "eslint",
     "start": "export NODE_ENV=development&&nodemon server.js",
     "start:prod": "export NODE_ENV=production&&nodemon server.js",
     "start_win": "set NODE_ENV=development&&nodemon server.js",
@@ -26,6 +27,12 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "@eslint/js": "^9.25.1",
+    "eslint": "^9.25.1",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "globals": "^16.0.0",
+    "nodemon": "^3.1.10",
+    "prettier": "3.5.3"
   }
 }
