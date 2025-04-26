@@ -9,8 +9,16 @@
 - nodemon
 
 TODO alttaki ayarlar hatalı kullanılacaksa düzenlenmesi gerek
-- eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-config-airbnb eslint-plugin-node eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react
- 
+
+- eslint
+  prettier
+  eslint-config-prettier
+  eslint-plugin-prettier
+  eslint-config-airbnb
+  eslint-plugin-node
+  eslint-plugin-import
+  eslint-plugin-jsx-a11y
+  eslint-plugin-react
 
 # express
 
