@@ -15,8 +15,8 @@
   "type": "commonjs",
   "main": "app.js",
   "scripts": {
-    "start": "set NODE_ENV=development&&nodemon server.js",
-    "start:prod": "set NODE_ENV=production&&nodemon server.js"
+    "start": "export NODE_ENV=development&&nodemon server.js",
+    "start:prod": "export NODE_ENV=production&&nodemon server.js"
   },
   "dependencies": {
     "dotenv": "^16.5.0",
