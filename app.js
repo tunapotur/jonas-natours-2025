@@ -1,20 +1,25 @@
 const express = require('express');
 const morgan = require('morgan');
 
+//controllers imports
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 
 const app = express();
 
-// 1-MIDDLEWARES
+// MIDDLEWARES
+// Morgan middleware is used for web server information when development mode
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
+// Necessary express middlewares
 console.log(process.env.NODE_ENV);
-
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
+
+// ROUTES MIDDLEWARES
+// Those routers contain controllers to check user requests
 
 app.use((req, res, next) => {
   console.log('Hello from the middleware 👋🏻');
@@ -26,7 +31,6 @@ app.use((req, res, next) => {
   next();
 });
 
-//3) ROUTES
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 
