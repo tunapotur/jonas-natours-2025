@@ -1,62 +1,78 @@
 const mongoose = require('mongoose');
 
-const tourSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, 'A tour must have a name'],
-    unique: true,
-    trim: true,
-  },
-  duration: {
-    type: Number,
-    required: [true, 'A tour must have a duration'],
-  },
-  maxGroupSize: {
-    type: Number,
-    required: [true, 'A tour must have a group size'],
-  },
-  difficulty: {
-    type: String,
-    required: [true, 'A tour must have a difficulty'],
-  },
-  ratingsAverage: {
-    type: Number,
-    default: 4.5,
-  },
-  ratingsQuantity: {
-    type: Number,
-    default: 0,
-  },
-  price: {
-    type: Number,
-    required: [true, 'A tour must have a price'],
-  },
-  priceDiscount: Number,
-  summary: {
-    type: String,
-    trim: true,
-    required: [true, 'A tour must have a description'],
-  },
-  description: {
-    type: String,
-    trim: true,
-  },
-  imageCover: {
-    type: String,
-    required: [true, 'A tour must have a cover image'],
-  },
-  images: [String],
-  /* 
+const tourSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: [true, 'A tour must have a name'],
+      unique: true,
+      trim: true,
+    },
+    duration: {
+      type: Number,
+      required: [true, 'A tour must have a duration'],
+    },
+    maxGroupSize: {
+      type: Number,
+      required: [true, 'A tour must have a group size'],
+    },
+    difficulty: {
+      type: String,
+      required: [true, 'A tour must have a difficulty'],
+    },
+    ratingsAverage: {
+      type: Number,
+      default: 4.5,
+    },
+    ratingsQuantity: {
+      type: Number,
+      default: 0,
+    },
+    price: {
+      type: Number,
+      required: [true, 'A tour must have a price'],
+    },
+    priceDiscount: Number,
+    summary: {
+      type: String,
+      trim: true,
+      required: [true, 'A tour must have a description'],
+    },
+    description: {
+      type: String,
+      trim: true,
+    },
+    imageCover: {
+      type: String,
+      required: [true, 'A tour must have a cover image'],
+    },
+    images: [String],
+    /* 
   TODO Success projesinde time stamp 
   kullanım var ona bir bak. 
   Bunun yerine o kullanılabilir.
    */
-  createdAt: {
-    type: Date,
-    default: Date.now(),
-    select: false,
+    createdAt: {
+      type: Date,
+      default: Date.now(),
+      select: false,
+    },
+    startDates: [Date],
   },
-  startDates: [Date],
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  },
+);
+
+tourSchema.virtual('durationWeeks').get(function () {
+  /**
+   * *arrow fonksiyon operatörünü kullanmadık
+   * function tanımı this operatörü ile
+   * kendi tourSchema nesnesi içinde bulunan
+   * duration değişkenine erişebildi.
+   */
+  return this.duration / 7;
 });
 
 const Tour = mongoose.model('Tour', tourSchema);
