@@ -17,3 +17,5 @@ http://localhost:3000/api/v1/tours?fields=name,duration,difficulty,price,ratings
 http://localhost:3000/api/v1/tours?page=2&limit=10
 
 http://localhost:3000/api/v1/tours/top-5-cheap
+
+TODO:APIFeatures sınıfında bulunan her metod this return etti bunun sebebini not al.
