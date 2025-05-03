@@ -15,3 +15,5 @@ http://localhost:3000/api/v1/tours?fields=name,duration,difficulty,price,ratings
     query = query.skip(10).limit(10);
 
 http://localhost:3000/api/v1/tours?page=2&limit=10
+
+http://localhost:3000/api/v1/tours/top-5-cheap
