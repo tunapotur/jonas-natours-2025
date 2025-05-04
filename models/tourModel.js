@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
+// const validator = require('validator');
 
 const tourSchema = new mongoose.Schema(
   {
@@ -10,6 +11,7 @@ const tourSchema = new mongoose.Schema(
       trim: true,
       maxlength: [40, 'A tour name must have less or equal then 40 characters'],
       minlength: [10, 'A tour name must have more or equal then 10 characters'],
+      // validate: [validator.isAlpha, 'Tour name must only contain characters'],
     },
     slug: String,
     duration: {
@@ -42,7 +44,21 @@ const tourSchema = new mongoose.Schema(
       type: Number,
       required: [true, 'A tour must have a price'],
     },
-    priceDiscount: Number,
+    priceDiscount: {
+      type: Number,
+      validate: {
+        validator: function (val) {
+          /**
+           * 200 < 100 =>false
+           * 100 < 200 =>true
+           */
+          // this only points to current doc on NEW document creation
+          // sadece kayıt oluştururken çalışacaktır. Güncellemede çalışmaz
+          return val < this.price;
+        },
+        message: 'Discount price ({VALUE}) should be below regular price',
+      },
+    },
     summary: {
       type: String,
       trim: true,
@@ -58,9 +74,9 @@ const tourSchema = new mongoose.Schema(
     },
     images: [String],
     /* 
-  TODO Success projesinde time stamp 
-  kullanım var ona bir bak. 
-  Bunun yerine o kullanılabilir.
+    TODO Success projesinde time stamp 
+    kullanım var ona bir bak. 
+    Bunun yerine o kullanılabilir.
    */
     createdAt: {
       type: Date,
@@ -110,7 +126,7 @@ tourSchema.pre('save', function (next) {
 /*
 * .pre işlem öncesi çalıştırılacak middleware
 tourSchema.pre('save', function (next) {
-  console.log('will save document...');
+  console.log('Will save document...');
   next();
 });
 
@@ -138,7 +154,7 @@ tourSchema.pre(/^find/, function (next) {
 });
 
 tourSchema.post(/^find/, function (docs, next) {
-  console.log(`Query took ${Date.now() - this.start} milliseconds`);
+  console.log(`Query took ${Date.now() - this.start} milliseconds!`);
   next();
 });
 
@@ -151,6 +167,8 @@ tourSchema.post(/^find/, function (docs, next) {
  */
 tourSchema.pre('aggregate', function (next) {
   this.pipeline().unshift({ $match: { secretTour: { $ne: true } } });
+
+  console.log(this.pipeline());
   next();
 });
 

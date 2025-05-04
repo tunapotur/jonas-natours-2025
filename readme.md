@@ -4,6 +4,7 @@
 - morgan
 - dotenv
 - slugify
+- validator
 
 # devDependencies
 
