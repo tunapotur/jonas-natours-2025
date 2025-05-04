@@ -3,6 +3,7 @@
 - express
 - morgan
 - dotenv
+- slugify
 
 # devDependencies
 

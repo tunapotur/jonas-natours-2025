@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 const tourSchema = new mongoose.Schema(
   {
@@ -8,6 +9,7 @@ const tourSchema = new mongoose.Schema(
       unique: true,
       trim: true,
     },
+    slug: String,
     duration: {
       type: Number,
       required: [true, 'A tour must have a duration'],
@@ -74,6 +76,37 @@ tourSchema.virtual('durationWeeks').get(function () {
    */
   return this.duration / 7;
 });
+
+// TODO: Document middleware ile kullanıcı şifresinin uygunluğu test edilebilir.
+/**
+ * DOCUMENT MIDDLEWARE: runs before .save() and .create()
+ * Document middleware'de bir middleware olduğundan
+ * çevrimi devam ettirmek için next() metodu kullanılır
+ *
+ * schema.pre("save",function(next){...})
+ * save => hook, hangi işlemlerin öncesinde ya da
+ * sonrasında middlewarenin çalıştırılacağını belirtir
+ * function => middleware; işletilecek fonksiyon
+ * .pre, .post => middleware fonksiyonunun ne zaman işletileceğini belirtir
+ */
+tourSchema.pre('save', function (next) {
+  this.slug = slugify(this.name, { lower: true });
+  next();
+});
+
+/*
+* .pre işlem öncesi çalıştırılacak middleware
+tourSchema.pre('save', function (next) {
+  console.log('will save document...');
+  next();
+});
+
+* .post işlem sonrasında çalıştırılacak middleware
+tourSchema.post('save', function (doc, next) {
+  console.log(doc);
+  next();
+});
+*/
 
 const Tour = mongoose.model('Tour', tourSchema);
 
