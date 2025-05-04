@@ -131,7 +131,18 @@ tourSchema.pre(/^find/, function (next) {
 
 tourSchema.post(/^find/, function (docs, next) {
   console.log(`Query took ${Date.now() - this.start} milliseconds`);
-  console.log(docs);
+  next();
+});
+
+// AGGREGATION MIDDLEWARE
+/**
+ * aggregate işleminde bulunan pipline array'inin
+ * başına unshift() ile { $match: { secretTour: { $ne: true } } } objesi ekleniyor
+ * bu eklenen obje ile match ile eşleşen secretTour değeri dahil edilmiyor
+ * this.pipeline().unshift({ $match: { secretTour: { $ne: true } } });
+ */
+tourSchema.pre('aggregate', function (next) {
+  this.pipeline().unshift({ $match: { secretTour: { $ne: true } } });
   next();
 });
 
