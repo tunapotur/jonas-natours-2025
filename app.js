@@ -33,7 +33,7 @@ app.all('*', (req, res, next) => {
   //   message: `Can't find ${req.originalUrl} on this server`,
   // });
 
-  /**
+  /**Implementing a Global Error Handling Middleware
    * Yanlış girilen url adresleri için
    * bir Error(err) nesnesi oluşturuluyor
    * belirlenen route adresleri dışında bir adres girilirse
@@ -48,7 +48,7 @@ app.all('*', (req, res, next) => {
   next(err);
 });
 
-/**
+/**Implementing a Global Error Handling Middleware
  * express.js bu fonksiyonun tanımından dolayı
  * bu fonksiyonu hata yakalama router'ı olarak tanıyor
  * next(err) ile hatalı girilen url buraya yönlendiriliyor
