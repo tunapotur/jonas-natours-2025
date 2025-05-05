@@ -14,23 +14,16 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Necessary express middlewares
-console.log(process.env.NODE_ENV);
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
-
-// ROUTES MIDDLEWARES
-// Those routers contain controllers to check user requests
-
-app.use((req, res, next) => {
-  console.log('Hello from the middleware 👋🏻');
-  next();
-});
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
 });
 
+// ROUTES MIDDLEWARES
+// Those routers contain controllers to check user requests
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 

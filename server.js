@@ -8,7 +8,6 @@ const DB = process.env.MONGODB_URI;
 
 mongoose
   .connect(DB, {
-    //TODO bu options ayarlarını incele
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,

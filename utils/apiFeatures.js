@@ -5,8 +5,6 @@ class APIFeatures {
   }
 
   filter() {
-    // console.log(req.query);
-
     /*     
       * find üzerinde farklı bir sorgu tipi
       const tours = await Tour.find()

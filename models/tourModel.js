@@ -73,11 +73,7 @@ const tourSchema = new mongoose.Schema(
       required: [true, 'A tour must have a cover image'],
     },
     images: [String],
-    /* 
-    TODO Success projesinde time stamp 
-    kullanım var ona bir bak. 
-    Bunun yerine o kullanılabilir.
-   */
+
     createdAt: {
       type: Date,
       default: Date.now(),
@@ -106,7 +102,6 @@ tourSchema.virtual('durationWeeks').get(function () {
 });
 
 //DOCUMENT MIDDLEWARE
-// TODO: Document middleware ile kullanıcı şifresinin uygunluğu test edilebilir.
 /**
  * DOCUMENT MIDDLEWARE: runs before .save() and .create()
  * Document middleware'de bir middleware olduğundan
@@ -138,7 +133,6 @@ tourSchema.post('save', function (doc, next) {
 */
 
 // QUERY MIDDLEWARE
-// TODO: count hook ile çok büyük sayıda veri çekilmesi .pre ile önlenebilir
 /**
  * tourSchema.pre('find', function (next) {
  * bu haliyle sadece find ile yapılan çağrılarda kullanılır
@@ -168,7 +162,6 @@ tourSchema.post(/^find/, function (docs, next) {
 tourSchema.pre('aggregate', function (next) {
   this.pipeline().unshift({ $match: { secretTour: { $ne: true } } });
 
-  console.log(this.pipeline());
   next();
 });
 
