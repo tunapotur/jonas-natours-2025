@@ -14,18 +14,11 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Necessary express middlewares
-console.log(process.env.NODE_ENV);
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 
 // ROUTES MIDDLEWARES
 // Those routers contain controllers to check user requests
-
-app.use((req, res, next) => {
-  console.log('Hello from the middleware 👋🏻');
-  next();
-});
-
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
@@ -33,5 +26,42 @@ app.use((req, res, next) => {
 
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
+
+app.all('*', (req, res, next) => {
+  // res.status(404).json({
+  //   status: 'fail',
+  //   message: `Can't find ${req.originalUrl} on this server`,
+  // });
+
+  /**
+   * Yanlış girilen url adresleri için
+   * bir Error(err) nesnesi oluşturuluyor
+   * belirlenen route adresleri dışında bir adres girilirse
+   * yıldız ile yakalanarak burada ki hata nesnesi yaratılıyor ve
+   * next(err) fonksiyonuyla hata oluştuğunda değer dönen
+   * router işlemi tetikleniyor
+   */
+  const err = new Error(`Can't find ${req.originalUrl} on this server`);
+  err.status = 'fail';
+  err.statusCode = 404;
+
+  next(err);
+});
+
+/**
+ * express.js bu fonksiyonun tanımından dolayı
+ * bu fonksiyonu hata yakalama router'ı olarak tanıyor
+ * next(err) ile hatalı girilen url buraya yönlendiriliyor
+ * res.status() metodu ile hata kullanıcıya döndürülüyor
+ */
+app.use((err, req, res, next) => {
+  err.statusCode = err.statusCode || 500;
+  err.status = err.status || 'error';
+
+  res.status(err.statusCode).json({
+    status: err.status,
+    message: err.message,
+  });
+});
 
 module.exports = app;
