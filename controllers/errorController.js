@@ -1,8 +1,20 @@
 const AppError = require('../utils/appError');
 
 const handleCastErrorDB = (err) => {
-  console.log('******** Handle Cast Error DB ********');
   const message = `Invalid ${err.path}: ${err.value}.`;
+  return new AppError(message, 400);
+};
+
+const handleDuplicateFieldsDB = (err) => {
+  // Düzgün çalışması için bu şekilde kullanılması gerek. Kursun anlatımı geçersiz kalmış.
+  const message = `Duplicate field value: ${err.keyValue.name}. Please use another value!`;
+  return new AppError(message, 400);
+};
+
+const handleValidationErrorDB = (err) => {
+  const errors = Object.values(err.errors).map((el) => el.message);
+
+  const message = `Invalid input data. ${errors.join('. ')}`;
   return new AppError(message, 400);
 };
 
@@ -54,9 +66,20 @@ module.exports = (err, req, res, next) => {
   if (process.env.NODE_ENV === 'development') {
     sendErrorDev(err, res);
   } else if (process.env.NODE_ENV === 'production') {
-    let error = { ...err };
+    /**
+     * let error = { ...err };
+     * bu işlem ile hatalı nesne oluşuyor
+     * ÇÖZÜM ALTTA!
+     */
+    //let error = { ...err, name: err.name }; //1.Çözüm
+    //3. çözüm en iyi çözüm!
+    // https://developer.mozilla.org/en-US/docs/Glossary/Deep_copy
+    let error = JSON.parse(JSON.stringify(err));
 
     if (error.name === 'CastError') error = handleCastErrorDB(error);
+    if (error.code === 11000) error = handleDuplicateFieldsDB(error);
+    if (error.name === 'ValidationError')
+      error = handleValidationErrorDB(error);
 
     sendErrorProd(error, res);
   }
