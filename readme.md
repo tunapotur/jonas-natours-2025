@@ -1,4 +1,4 @@
-Error Handling with Express:
+Authentication,Authorization and Security:124-129 Signing up Users
 
 # dependencies
 
@@ -7,6 +7,8 @@ Error Handling with Express:
 - dotenv
 - slugify
 - validator
+- bcryptjs
+- jsonwebtoken
 
 # devDependencies
 
@@ -41,3 +43,11 @@ Error Handling with Express:
 - https://github.com/GoogleChromeLabs/ndb
   npm i ndb --global
   npm i ndb --save-dev //local
+
+# bcryptjs
+
+https://github.com/dcodeIO/bcrypt.js
+
+# jsonwebtoken
+
+https://github.com/auth0/node-jsonwebtoken
