@@ -59,13 +59,16 @@ exports.login = catchAsync(async (req, res, next) => {
 
 /** Not çıkarılacak dosyalar
  * authController.js
- * userController.js
  * userModel.js
  * userRoutes.js
  */
 
 /**
- * "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MjA4NTU2OGI4YzE1NmIzNGE0NWMwNSIsImlhdCI6MTc0Njk2MTgwMSwiZXhwIjoxNzU0NzM3ODAxfQ.Q-4qYS_Qj8_WwcFv_m_XyaZSWZuR2zXyVbE-Xlo5Axs"
+ *"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+ eyJpZCI6IjY4MjA4NTU2OGI4YzE1NmIzNGE0NWMwNSIsImlhdCI6MTc0Njk2MjIzMSwiZXhwIjoxNzU0NzM4MjMxfQ.
+ 4FVvaCcdCnUdChwIQ41WYxaDHW9Yv4hbgoyCbW2zX98"
  *
- *"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MjA4NTU2OGI4YzE1NmIzNGE0NWMwNSIsImlhdCI6MTc0Njk2MTg0OSwiZXhwIjoxNzU0NzM3ODQ5fQ.Akm-7FkSNX56rMWmpCmR72Gc68tGiX9fOeh9pPuxQIA"
+ *"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+ eyJpZCI6IjY4MjA4NTU2OGI4YzE1NmIzNGE0NWMwNSIsImlhdCI6MTc0Njk2MjIzNywiZXhwIjoxNzU0NzM4MjM3fQ.
+ dbVyy4KTpZIC6H52HqT-90peRKaI-NeXQEcEE4n2Yzk"
  */
