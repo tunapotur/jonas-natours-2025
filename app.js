@@ -28,13 +28,10 @@ app.use((req, res, next) => {
 });
 
 /** Server üzerinde bulunan router tanımları */
-/** Server üzerinde bulunan router tanımları */
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 
-/** Mevcut router tanımları dışında
- * girilen router değerleri burada
- * yakalanıyor*/
+/
 /** Mevcut router tanımları dışında
  * girilen router değerleri burada
  * yakalanıyor*/
@@ -55,7 +52,6 @@ app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
-/**Implementing a Global Error Handling Middleware
 /**Implementing a Global Error Handling Middleware
  * express.js bu fonksiyonun tanımından dolayı
  * bu fonksiyonu hata yakalama router'ı olarak tanıyor
