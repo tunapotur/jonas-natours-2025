@@ -31,7 +31,6 @@ app.use((req, res, next) => {
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 
-/
 /** Mevcut router tanımları dışında
  * girilen router değerleri burada
  * yakalanıyor*/
