@@ -1,5 +1,5 @@
 Authentication,Authorization and Security:Logging in Users
-Authentication,Authorization and Security:Logging in Users:134 Authorization: User Roles and Permissions
+Authentication,Authorization and Security:Logging in Users:135,136
 
 # dependencies
 
@@ -10,6 +10,7 @@ Authentication,Authorization and Security:Logging in Users:134 Authorization: Us
 - validator
 - bcryptjs
 - jsonwebtoken
+- nodemailer
 
 # devDependencies
 
