@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
@@ -53,6 +54,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
   // 3) If everything ok, sen token to client
   const token = signToken(user._id);
+
   res.status(200).json({
     status: 'success',
     token,
@@ -184,5 +186,10 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 
   // 3) Update changedPasswordAt property for the user
   // 4) Log the user in, send JWT
-  createSendToken(user, 200, res);
+  const token = signToken(user._id);
+
+  res.status(200).json({
+    status: 'success',
+    token,
+  });
 });

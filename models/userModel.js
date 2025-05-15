@@ -50,7 +50,7 @@ userSchema.pre('save', async function (next) {
    * (burada password alanı-field) değiştirilip
    * değiştirilmediğine bakıyor.
    * Alttaki kod eğer password alanı değişmediyse
-   * alt satırları geçilmeden middlewareden çıkıyor.
+   * middlewareden çıkıyor.
    */
   // Only run this function if password was actually modified
   if (!this.isModified('password')) return next();
@@ -72,7 +72,35 @@ userSchema.pre('save', async function (next) {
    */
   // Delete passwordConfirm field
   this.passwordConfirm = undefined;
+  next();
+});
 
+userSchema.pre('save', function (next) {
+  /**
+   * Password alanı değişmediyse veya
+   * password alnı yeni oluşturulduysa
+   * fonksiyondan çıkılır ve
+   * bir sonraki rout işlemine geçilir
+   */
+  if (!this.isModified('password') || this.isNew) return next();
+
+  /**
+   * Eğer şifre değiştirildiyse;
+   * passwordChangedAt(sifrenin değiştiği tarih alanı)
+   * güncellenir
+   */
+  /**
+   * bazen veri tabanında güncelleme yapmak gecikebilir
+   * bu durumda zaman kontrollerinde hataya yol açacağından
+   * güncelleme tarihinden 1 saniye çıkartılıyor
+   */
+  this.passwordChangedAt = Date.now() - 1000;
+  next();
+});
+
+userSchema.pre(/^find/, function (next) {
+  // this points to the current query
+  this.find({ active: { $ne: false } });
   next();
 });
 
