@@ -3,7 +3,7 @@ Authentication,Authorization and Security:Logging in Users:137
 
 Authentication,Authorization and Security:Logging in Users: 135-137 04 Auth and Security 6 Reset Password, Email with Nodemailer
 
-04 Auth and Security 06 Reset Password, Email with Nodemailer 2 Reset Password
+04 Auth and Security 06 Reset Password, Email with Nodemailer 3 Operations
 
 # dependencies
 
