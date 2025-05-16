@@ -1,9 +1,4 @@
-Authentication,Authorization and Security:Logging in Users:137
-135, 136 ve 137 notu hazırlanacak
-
-Authentication,Authorization and Security:Logging in Users: 135-137 04 Auth and Security 6 Reset Password, Email with Nodemailer
-
-04 Auth and Security 06 Reset Password, Email with Nodemailer 3 Operations
+Authentication,Authorization and Security:Logging in Users:138 Updating the Current User:Password
 
 # dependencies
 
