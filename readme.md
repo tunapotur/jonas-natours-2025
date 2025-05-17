@@ -1,5 +1,5 @@
-Authentication,Authorization and Security:Logging in Users:138 Updating the Current User:Password
-04 Auth and Security 07 Update Password
+Authentication,Authorization and Security:Logging in Users:139 Updating the Current User:Data
+04 Auth and Security 08 Update(Me) Current User Data
 
 # dependencies
 
