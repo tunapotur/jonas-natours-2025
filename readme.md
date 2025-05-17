@@ -1,4 +1,5 @@
 Authentication,Authorization and Security:Logging in Users:138 Updating the Current User:Password
+04 Auth and Security 07 Update Password
 
 # dependencies
 
