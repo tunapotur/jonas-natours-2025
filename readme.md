@@ -1,4 +1,4 @@
-Authentication,Authorization and Security:Logging in Users:143 Implementing Rate Limiting
+Authentication,Authorization and Security:Logging in Users:144 Setting Security HTTP Headers
 04 Auth and Security 09 Delete(Me) Current User
 
 # dependencies
@@ -12,6 +12,7 @@ Authentication,Authorization and Security:Logging in Users:143 Implementing Rate
 - jsonwebtoken
 - nodemailer
 - express-rate-limit
+- helmet
 
 # devDependencies
 
