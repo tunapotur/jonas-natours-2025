@@ -1,5 +1,5 @@
-Authentication,Authorization and Security:Logging in Users:139 Updating the Current User:Data
-04 Auth and Security 08 Update(Me) Current User Data
+Authentication,Authorization and Security:Logging in Users:140 Deleting the Current User
+04 Auth and Security 09 Delete(Me) Current User
 
 # dependencies
 
