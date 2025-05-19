@@ -1,6 +1,5 @@
 Authentication,Authorization and Security:Logging in Users:144 Setting Security HTTP Headers
-04 Auth and Security 12 Setting Security HTTP Headers
-04 Auth and Security 13 Data Sanitization
+04 Auth and Security 14 Data Sanitization
 
 # dependencies
 
