@@ -1,5 +1,5 @@
 Authentication,Authorization and Security:Logging in Users:144 Setting Security HTTP Headers
-04 Auth and Security 14 Data Sanitization
+04 Auth and Security 14 Preventing Parameter Pollution
 
 # dependencies
 
@@ -15,6 +15,7 @@ Authentication,Authorization and Security:Logging in Users:144 Setting Security 
 - helmet
 - express-mongo-sanitize
 - xss-clean
+- hpp
   xss-clean eskidi bunun yerine
   https://github.com/AhmedAdelFahim/express-xss-sanitizer
   npm install express-xss-sanitizer
