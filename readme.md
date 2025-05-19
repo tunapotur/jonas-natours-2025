@@ -1,5 +1,5 @@
 Authentication,Authorization and Security:Logging in Users:144 Setting Security HTTP Headers
-04 Auth and Security 09 Delete(Me) Current User
+04 Auth and Security 10 Sending JWT Via Cookie
 
 # dependencies
 
@@ -13,6 +13,12 @@ Authentication,Authorization and Security:Logging in Users:144 Setting Security 
 - nodemailer
 - express-rate-limit
 - helmet
+- express-mongo-sanitize
+- xss-clean
+  xss-clean eskidi bunun yerine
+  https://github.com/AhmedAdelFahim/express-xss-sanitizer
+  npm install express-xss-sanitizer
+  express-xss-sanitizer öneriliyor
 
 # devDependencies
 

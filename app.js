@@ -33,6 +33,10 @@ app.use('/api', limiter);
 // Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
 
+// Data sanitization against NoSQL query injection
+
+// Data sanitization against XSS
+
 // Serving static files
 app.use(express.static(`${__dirname}/public`));
 
