@@ -1,5 +1,5 @@
 Authentication,Authorization and Security:Logging in Users:144 Setting Security HTTP Headers
-04 Auth and Security 10 Sending JWT Via Cookie
+04 Auth and Security 11 Rate Limiting
 
 # dependencies
 
