@@ -12,6 +12,7 @@ const globalErrorHandler = require('./controllers/errorController');
 //controllers imports
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
 
 const app = express();
 
@@ -71,6 +72,7 @@ app.use((req, res, next) => {
 /** Server üzerinde bulunan router tanımları */
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/reviews', reviewRoutes);
 
 /** Mevcut router tanımları dışında
  * girilen router değerleri burada
