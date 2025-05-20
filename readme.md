@@ -1,5 +1,5 @@
-Authentication,Authorization and Security:Logging in Users:144 Setting Security HTTP Headers
-04 Auth and Security 14 Preventing Parameter Pollution
+Modelling Data and Advanced Mongoose: 147-154
+05 Modelling Data and Advanced Mongoose Populating
 
 # dependencies
 
