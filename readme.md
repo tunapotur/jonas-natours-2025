@@ -1,4 +1,4 @@
-Modelling Data and Advanced Mongoose: 145-156
+Modelling Data and Advanced Mongoose: 158 Implementing Simple Nested Routes
 05 Modelling Data and Advanced Mongoose Populating
 
 # dependencies
