@@ -1,0 +1,5 @@
+//POST: {{URL}}api/v1/tours/5c88fa8cf4afda39709c295d/reviews
+{
+  "rating": 4,
+  "review": "very good tour"
+}
