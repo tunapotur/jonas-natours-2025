@@ -1,6 +1,4 @@
-Modelling Data and Advanced Mongoose: 159 Nested Routers with Express
-05 Modelling Data and Advanced Mongoose Populating
-Modelling Data and Advanced Mongoose Adding a Nested GET Endpoint
+Modelling Data and Advanced Mongoose: 161-164 Handler Factory Functions
 
 # dependencies
 
