@@ -126,13 +126,11 @@ const tourSchema = new mongoose.Schema(
   },
 );
 
+// tourSchema.index({ price: 1 });
+tourSchema.index({ price: 1, ratingsAverage: -1 });
+tourSchema.index({ slug: 1 });
+
 tourSchema.virtual('durationWeeks').get(function () {
-  /**
-   * *arrow fonksiyon operatörünü kullanmadık
-   * function tanımı this operatörü ile
-   * kendi tourSchema nesnesi içinde bulunan
-   * duration değişkenine erişebildi.
-   */
   return this.duration / 7;
 });
 
@@ -145,52 +143,12 @@ tourSchema.virtual('reviews', {
 
 //DOCUMENT MIDDLEWARE
 // TODO: Document middleware ile kullanıcı şifresinin uygunluğu test edilebilir.
-/**
- * DOCUMENT MIDDLEWARE: runs before .save() and .create()
- * Document middleware'de bir middleware olduğundan
- * çevrimi devam ettirmek için next() metodu kullanılır
- *
- * schema.pre("save",function(next){...})
- * save => hook, hangi işlemlerin öncesinde ya da
- * sonrasında middlewarenin çalıştırılacağını belirtir
- * function => middleware; işletilecek fonksiyon
- * .pre, .post => middleware fonksiyonunun ne zaman işletileceğini belirtir
- */
 tourSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });
   next();
 });
 
-/*
-* Guide kullanıcısının tüm bilgisini yine bir tour oluşturulduğunda tour'un içine gömen kod. Bu tour dokümanını gereksiz şişireceği için doğru bir yöndem değildir
-tourSchema.pre('save', async function (next) {
-  const guidesPromises = this.guides.map(async (id) => await User.findById(id));
-  this.guides = await Promise.all(guidesPromises);
-  next();
-});
-
-* .pre işlem öncesi çalıştırılacak middleware
-tourSchema.pre('save', function (next) {
-  console.log('Will save document...');
-  next();
-});
-
-* .post işlem sonrasında çalıştırılacak middleware
-tourSchema.post('save', function (doc, next) {
-  console.log(doc);
-  next();
-});
-*/
-
 // QUERY MIDDLEWARE
-// TODO: count hook ile çok büyük sayıda veri çekilmesi .pre ile önlenebilir
-/**
- * tourSchema.pre('find', function (next) {
- * bu haliyle sadece find ile yapılan çağrılarda kullanılır
- * /^find/ bu regular expiration ifadesiyle
- * findById, findByIdAndUpdate, findByIdAndDelete gibi
- * find ile başlayan tüm ifadelerde middleware fonksiyonu çalışır
- */
 tourSchema.pre(/^find/, function (next) {
   this.find({ secretTour: { $ne: true } });
 
@@ -213,12 +171,6 @@ tourSchema.post(/^find/, function (docs, next) {
 });
 
 // AGGREGATION MIDDLEWARE
-/**
- * aggregate işleminde bulunan pipline array'inin
- * başına unshift() ile { $match: { secretTour: { $ne: true } } } objesi ekleniyor
- * bu eklenen obje ile match ile eşleşen secretTour değeri dahil edilmiyor
- * this.pipeline().unshift({ $match: { secretTour: { $ne: true } } });
- */
 tourSchema.pre('aggregate', function (next) {
   this.pipeline().unshift({ $match: { secretTour: { $ne: true } } });
 

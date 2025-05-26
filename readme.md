@@ -1,4 +1,6 @@
-Modelling Data and Advanced Mongoose: 161-164 Handler Factory Functions
+Modelling Data and Advanced Mongoose: 165-167
+Missing Authentication and Authorization
+Improving Read Performance with Indexes
 
 # dependencies
 
