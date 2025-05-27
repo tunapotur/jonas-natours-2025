@@ -66,7 +66,7 @@ reviewSchema.statics.calcAverageRating = async function (tourId) {
       },
     },
   ]);
-  // console.log(stats);
+  console.log(stats);
 
   if (stats.length > 0) {
     await Tour.findByIdAndUpdate(tourId, {
@@ -81,22 +81,12 @@ reviewSchema.statics.calcAverageRating = async function (tourId) {
   }
 };
 
-reviewSchema.post('save', function () {
-  // this points to current review
-  this.constructor.calcAverageRating(this.tour);
-});
-
+// save
 // findByIdAndUpdate
 // findByIdAndDelete
-reviewSchema.pre(/^findOneAnd/, async function (next) {
-  this.r = await this.findOne();
-  console.log(this.r);
+reviewSchema.post(/save|^findOneAnd/, async (doc, next) => {
+  await doc.constructor.calcAverageRating(doc.tour);
   next();
-});
-
-reviewSchema.post(/^findOneAnd/, async function () {
-  // await this.findOne(); does NOT work here, query has already executed
-  await this.r.constructor.calcAverageRating(this.r.tour);
 });
 
 const Review = mongoose.model('Review', reviewSchema);
@@ -104,16 +94,6 @@ const Review = mongoose.model('Review', reviewSchema);
 module.exports = Review;
 
 /**
- *
- 
-schema.post('save', async function(doc, next) {
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  console.log('post1');
-  // If there's a `next` parameter, you need to call `next()`.
-  next();
-});
-
-
 reviewSchema.post(/^findOneAnd/, async function(doc) {
   if (doc) {
     await doc.constructor.calcAverageRating(doc.tour);
@@ -123,11 +103,4 @@ reviewSchema.post(/^findOneAnd/, async function(doc) {
 https://mongoosejs.com/docs/middleware.html#post
 
 https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/learn/lecture/15065024#questions/9495654
-
-
-reviewSchema.post(/^findOneAnd/, async function(doc, next) {
-  await doc.constructor.calcAverageRating(doc.tour);
-  next();
-});
-
- */
+*/
