@@ -104,11 +104,30 @@ const Review = mongoose.model('Review', reviewSchema);
 module.exports = Review;
 
 /**
- * 
+ *
+ 
+schema.post('save', async function(doc, next) {
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  console.log('post1');
+  // If there's a `next` parameter, you need to call `next()`.
+  next();
+});
+
+
 reviewSchema.post(/^findOneAnd/, async function(doc) {
   if (doc) {
     await doc.constructor.calcAverageRating(doc.tour);
   }
+});
+
+https://mongoosejs.com/docs/middleware.html#post
+
+https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/learn/lecture/15065024#questions/9495654
+
+
+reviewSchema.post(/^findOneAnd/, async function(doc, next) {
+  await doc.constructor.calcAverageRating(doc.tour);
+  next();
 });
 
  */
