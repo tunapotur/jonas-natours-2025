@@ -1,6 +1,6 @@
-Modelling Data and Advanced Mongoose: 165-167
-Missing Authentication and Authorization
-Improving Read Performance with Indexes
+Modelling Data and Advanced Mongoose: 168-170
+Calculating Average Rating
+Preventing Duplicates
 
 # dependencies
 
