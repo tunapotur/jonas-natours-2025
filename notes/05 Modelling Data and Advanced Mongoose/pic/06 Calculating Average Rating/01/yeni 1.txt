@@ -1,5 +1,0 @@
-1 "_id": "6835f55b8d083e6afc0636ca", "rating": 5, "review": "COOL",
-2 "_id": "6835f4638d083e6afc0636c2", "rating": 1, "review": "Teerrible",
-3 "_id": "6835f1eaa40b416c7413649f", "rating": 5, "review": "AMAZING",
-4 "_id": "6835f124b83c6f6f9c133e94", "rating": 5, "review": "Great",
-5 "_id": "6835efb4b83c6f6f9c133e90", "rating": 3, "review": "OK",
