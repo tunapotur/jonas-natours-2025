@@ -1,4 +1,4 @@
-Modelling Data and Advanced Mongoose: 168-170
+Modelling Data and Advanced Mongoose: 171-173 Geospatial Api Doc Postman
 Calculating Average Rating
 Preventing Duplicates
 
@@ -63,3 +63,7 @@ https://github.com/dcodeIO/bcrypt.js
 # jsonwebtoken
 
 https://github.com/auth0/node-jsonwebtoken
+
+# jonasschmedtmann complete-node-bootcamp postman
+
+https://documenter.getpostman.com/view/4237486/S1LwxnaE?version=latest
