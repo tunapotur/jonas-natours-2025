@@ -87,15 +87,15 @@ exports.getMonthlyPlan = catchAsync(async (req, res, next) => {
       $sort: { numTourStarts: -1 },
     },
     {
-      $limit: 12
-    }
+      $limit: 12,
+    },
   ]);
 
   res.status(200).json({
     status: 'success',
     data: {
-      plan
-    }
+      plan,
+    },
   });
 });
 
@@ -111,21 +111,21 @@ exports.getToursWithin = catchAsync(async (req, res, next) => {
     next(
       new AppError(
         'Please provide latitutr and longitude in the format lat,lng.',
-        400
-      )
+        400,
+      ),
     );
   }
 
   const tours = await Tour.find({
-    startLocation: { $geoWithin: { $centerSphere: [[lng, lat], radius] } }
+    startLocation: { $geoWithin: { $centerSphere: [[lng, lat], radius] } },
   });
 
   res.status(200).json({
     status: 'success',
     results: tours.length,
     data: {
-      data: tours
-    }
+      data: tours,
+    },
   });
 });
 
@@ -139,27 +139,34 @@ exports.getDistances = catchAsync(async (req, res, next) => {
     next(
       new AppError(
         'Please provide latitutr and longitude in the format lat,lng.',
-        400
-      )
+        400,
+      ),
     );
   }
 
   const distances = await Tour.aggregate([
     {
-      $limit: 12,
+      $geoNear: {
+        near: {
+          type: 'Point',
+          coordinates: [lng * 1, lat * 1],
+        },
+        distanceField: 'distance',
+        distanceMultiplier: multiplier,
+      },
     },
     {
       $project: {
         distance: 1,
-        name: 1
-      }
-    }
+        name: 1,
+      },
+    },
   ]);
 
   res.status(200).json({
     status: 'success',
     data: {
-      plan,
+      data: distances,
     },
   });
 });
