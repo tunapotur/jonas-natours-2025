@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
@@ -12,11 +13,18 @@ const globalErrorHandler = require('./controllers/errorController');
 //controllers imports
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
-const reviewRoutes = require('./routes/reviewRoutes');
+const reviewRouter = require('./routes/reviewRoutes');
+const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
 
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, './views'));
+
 // 1) GLOBAL MIDDLEWARES
+// Serving static files
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Set security HTTP headers
 app.use(helmet());
 
@@ -57,9 +65,6 @@ app.use(
   }),
 );
 
-// Serving static files
-app.use(express.static(`${__dirname}/public`));
-
 // Test middleware
 // Those routers contain controllers to check user requests
 app.use((req, res, next) => {
@@ -70,9 +75,10 @@ app.use((req, res, next) => {
 
 // ROUTES MIDDLEWARES
 /** Server üzerinde bulunan router tanımları */
+app.use('/', viewRouter);
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
-app.use('/api/v1/reviews', reviewRoutes);
+app.use('/api/v1/reviews', reviewRouter);
 
 /** Mevcut router tanımları dışında
  * girilen router değerleri burada

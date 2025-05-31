@@ -21,6 +21,7 @@ Preventing Duplicates
   https://github.com/AhmedAdelFahim/express-xss-sanitizer
   npm install express-xss-sanitizer
   express-xss-sanitizer öneriliyor
+  pug
 
 # devDependencies
 
@@ -67,3 +68,7 @@ https://github.com/auth0/node-jsonwebtoken
 # jonasschmedtmann complete-node-bootcamp postman
 
 https://documenter.getpostman.com/view/4237486/S1LwxnaE?version=latest
+
+# pug
+
+https://pugjs.org/api/getting-started.html
