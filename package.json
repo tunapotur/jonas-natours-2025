@@ -20,10 +20,15 @@
     "start:prod": "export NODE_ENV=production&&nodemon server.js",
     "start_win": "set NODE_ENV=development&&nodemon server.js",
     "start_win:prod": "set NODE_ENV=production&&nodemon server.js",
-    "debug": "ndb server.js"
+    "debug": "ndb server.js",
+    "watch:js": "esbuild ./public/js/index.js --bundle --outfile=./public/js/bundle.js --loader:.png=dataurl --watch",
+    "build:js": "esbuild ./public/js/index.js --bundle --outfile=./public/js/bundle.js --loader:.png=dataurl"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "axios": "^1.9.0",
     "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
     "dotenv": "^16.5.0",
     "express": "^4.21.2",
     "express-mongo-sanitize": "^2.2.0",
@@ -43,6 +48,8 @@
   "devDependencies": {
     "@eslint/js": "^9.25.1",
     "@prettier/plugin-pug": "^3.4.0",
+    "buffer": "^6.0.3",
+    "esbuild": "0.25.5",
     "eslint": "^9.25.1",
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-prettier": "^5.2.6",

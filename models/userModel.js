@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema({
       validator: function (el) {
         return el === this.password;
       },
-      message: 'Password are not the same!',
+      message: 'Passwords are not the same!',
     },
   },
   // TODO: mongoose timestamp özelliği property'lerin update olduğu tarihide kaydediyor. Bunu incele bu şekilde bir düzenlemeye git.

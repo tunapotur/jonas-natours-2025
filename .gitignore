@@ -91,3 +91,4 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 yarn.lock
+.parcel-cache

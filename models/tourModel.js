@@ -143,7 +143,7 @@ tourSchema.virtual('reviews', {
   localField: '_id',
 });
 
-//DOCUMENT MIDDLEWARE
+// DOCUMENT MIDDLEWARE: runs before .save() and .create()
 // TODO: Document middleware ile kullanıcı şifresinin uygunluğu test edilebilir.
 tourSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });
@@ -167,6 +167,7 @@ tourSchema.pre('save', function (next) {
 // });
 
 // QUERY MIDDLEWARE
+// tourSchema.pre('find', function(next) {
 tourSchema.pre(/^find/, function (next) {
   this.find({ secretTour: { $ne: true } });
 

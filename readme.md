@@ -17,18 +17,21 @@ Preventing Duplicates
 - express-mongo-sanitize
 - xss-clean
 - hpp
-  xss-clean eskidi bunun yerine
+- xss-clean eskidi bunun yerine
   https://github.com/AhmedAdelFahim/express-xss-sanitizer
   npm install express-xss-sanitizer
   express-xss-sanitizer öneriliyor
-  pug
-  leaflet
+- pug
+- leaflet
+- axios
+- cookie-parser
 
 # devDependencies
 
+- esbuild
 - nodemon
-
 - eslint
+- @babel/polyfill
 
   https://eslint.org/docs/latest/use/getting-started
   npm init @eslint/config@latest
@@ -77,3 +80,18 @@ https://pugjs.org/api/getting-started.html
 # leaflet
 
 https://leafletjs.com/
+
+# Axios
+
+https://axios-http.com/docs/intro
+
+# Esbuild
+
+https://esbuild.github.io/
+
+parcel yerine kullanılan bundler
+npm install --save-exact --save-dev esbuild
+
+# @babel/polyfill
+
+https://babeljs.io/docs/babel-polyfill
