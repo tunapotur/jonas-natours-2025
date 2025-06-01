@@ -22,6 +22,7 @@ Preventing Duplicates
   npm install express-xss-sanitizer
   express-xss-sanitizer öneriliyor
   pug
+  leaflet
 
 # devDependencies
 
@@ -72,3 +73,7 @@ https://documenter.getpostman.com/view/4237486/S1LwxnaE?version=latest
 # pug
 
 https://pugjs.org/api/getting-started.html
+
+# leaflet
+
+https://leafletjs.com/
