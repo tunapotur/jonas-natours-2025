@@ -69,6 +69,10 @@ https://github.com/dcodeIO/bcrypt.js
 
 https://github.com/auth0/node-jsonwebtoken
 
+# validator
+
+https://github.com/validatorjs/validator.js
+
 # jonasschmedtmann complete-node-bootcamp postman
 
 https://documenter.getpostman.com/view/4237486/S1LwxnaE?version=latest
